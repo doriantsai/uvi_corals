@@ -1,0 +1,37 @@
+# conda environment configuration file
+# for uvi coral training 2023
+
+name: uvi
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - python=3.9
+  - ipython
+  - numpy
+  - seaborn
+  - matplotlib>=3.3
+  - pip
+  - pandas
+  - pillow>=7.1.2
+  - scipy
+  - scikit-image
+  - scikit-learn
+  - pytorch::pytorch=1.12.0
+  - torchvision=0.13.0
+  - nvidia::cudatoolkit=11.3
+  - shapely
+  - pylint
+  - pytorch-lightning
+  - wandb
+  - opencv>=4.6
+  - albumentations
+  - gitpython>=3.1.30
+  - PyYAML
+  - psutil
+  - requests
+  - tensorboard>=2.4.1
+  - setuptools>=65.5.1
+  - pycocotools>=2.0.6
