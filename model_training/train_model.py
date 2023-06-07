@@ -18,8 +18,8 @@ model = YOLO('yolov8m-seg.pt')
 
 # train model
 print('Model Training:')
-data_file = '/home/zachary/UVI_Training/code/uvi_corals/model_training/uvi_training.yaml'
-model.train(data=data_file, epochs=200, imgsz=640, batch=4)
+data_file = '/home/zachary/UVI_Training/code/uvi_corals/model_training/uvi_training_combined_2.yaml'
+model.train(data=data_file, epochs=100, imgsz=640, batch=5)
 
 print('Model Validation:')
 metrics = model.val()
