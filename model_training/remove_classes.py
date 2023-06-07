@@ -30,18 +30,6 @@ import os
     
 # run through all yolo text files and remove all rows that are greater than X
 
-# read in all label files
-lbl_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined'
-lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
-
-out_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined_2'
-os.makedirs(out_dir, exist_ok=True)
-
-# for each lbl_file
-# iterate through each line in the label file
-# for the first character, apply class_change
-classes_to_keep = ['0', '1']
-
 def keep_classes(input_file, output_file, keep_classes):
     # read in file
     with open(input_file, 'r') as file:
@@ -57,15 +45,40 @@ def keep_classes(input_file, output_file, keep_classes):
     with open(output_file, 'w') as file:
         file.writelines(modified_lines)
         
-# for each label file, remove_classes
-for i, lbl_path in enumerate(lbl_files):
-    print(f'{i}/{len(lbl_files)}')
-    
-    out_file = os.path.join(out_dir, os.path.basename(lbl_path))
-    keep_classes(lbl_path, out_file, classes_to_keep)
-    
-print('done')
+        
+def remove_classes(lbl_dir, out_dir, classes_to_keep):
+    # read in all label files
 
-# # debug
-import code
-code.interact(local=dict(globals(), **locals()))
+    lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
+
+
+    os.makedirs(out_dir, exist_ok=True)
+
+    # for each lbl_file
+    # iterate through each line in the label file
+    # for the first character, apply class_change
+    
+
+
+        
+    # for each label file, remove_classes
+    for i, lbl_path in enumerate(lbl_files):
+        print(f'{i}/{len(lbl_files)}')
+        
+        out_file = os.path.join(out_dir, os.path.basename(lbl_path))
+        keep_classes(lbl_path, out_file, classes_to_keep)
+        
+    print('done')
+
+
+if __name__ == '__main__':
+    
+    lbl_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined'
+    out_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined_2'
+    classes_to_keep = ['0', '1']
+    
+    remove_classes(lbl_dir, out_dir, classes_to_keep)
+    
+    # # debug
+    import code
+    code.interact(local=dict(globals(), **locals()))

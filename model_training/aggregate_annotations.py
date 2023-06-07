@@ -123,5 +123,5 @@ if __name__ == '__main__':
     aggregate_annotations(lbl_dir, out_dir)
     
     # # debug
-    import code
-    code.interact(local=dict(globals(), **locals()))
+    # import code
+    # code.interact(local=dict(globals(), **locals()))
