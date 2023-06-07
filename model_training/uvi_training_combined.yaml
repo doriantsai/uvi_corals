@@ -8,32 +8,26 @@
 
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-path: /home/zachary/UVI_Training/data/yolo_seg/
+path: /home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/combined_classes/
 train: 
  - train  # train images (relative to 'path') 
 val:   # val images (relative to 'path') 
- - train # validation images (relative to 'path') 
+ - valid # validation images (relative to 'path') 
 test:  # test images (optional)
+-  test
 
 # Classes
 names:
-  0: Agaricia lamarki
-  1: Agaricia undata
-  2: Agaricia agaricites
-  3: Agaricia fragilis
-  4: Montastrea cavernosa
-  5: Agaricia grahamae
-  6: Sidastrea siderea
-  7: Unkown Coral
-  8: Orbicella anularis
-  9: Orbicella franksi
-  10: Solanastrea intersepta
-  11: Colpophyllia natans
-  12: Orbicella sp.
-  13: Porites porites
-  14: Porites asteroides
-  15: Pseudodiploria strigosa
-  16: Millepora alcicornis
-  17: Agaricia sp.
-  18: Mycetophyllia sp.
-  19: Meandrina meandrites
+    0: Agaricia
+    1: Orbicella
+    2: Montastrea cavernosa
+    3: Sidastrea siderea
+    4: Unkown Coral
+    5: Solanastrea intersepta
+    6: Colpophyllia natans
+    7: Porites porites
+    8: Porites asteroides
+    9: Pseudodiploria strigosa
+    10: Millepora alcicornis
+    11: Mycetophyllia sp.
+    12: Meandrina meandrites
