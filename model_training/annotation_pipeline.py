@@ -18,9 +18,8 @@ import split_data
 
 ## image folders
 # img_dir = []
-img_dir = '/home/zachary/UVI_Training/data/images'
-lbl_dir = '/home/zachary/UVI_Training/data/labels'
-
+img_dir = '/home/dorian/Data/uvi/images'
+lbl_dir = '/home/dorian/Data/uvi/labels'
 
 
 ## ======= convert COCO to YOLO BBOX ================
@@ -28,32 +27,32 @@ lbl_dir = '/home/zachary/UVI_Training/data/labels'
 ann_list = []
 out_list = []
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180511_clip_HBE_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180511_clip_HBE_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180511_clip_HBE_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180511_clip_HBE_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180227_clip_CBD_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180227_clip_CBD_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20180227_clip_CBD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20180227_clip_CBD_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180302_clip_LBH_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180302_clip_LBH_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20180302_clip_LBH_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20180302_clip_LBH_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180605_clip_MRS_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180605_clip_MRS_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20180605_clip_MRS_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20180605_clip_MRS_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20181104_clip_SRD_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20181104_clip_SRD_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20181104_clip_SRD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20181104_clip_SRD_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20181212_clip_GBF_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20181212_clip_GBF_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20181212_clip_GBF_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20181212_clip_GBF_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20221021_clip_LBP_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20221021_clip_LBP_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20221021_clip_LBP_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20221021_clip_LBP_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180228_clip_SRD_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180228_clip_SRD_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20180228_clip_SRD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20180228_clip_SRD_YOLO_BBOX'))
 
-ann_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180522_clip_GBF_COCO/')
-out_list.append('/home/zachary/UVI_Training/data/labels/TCRMP20180522_clip_GBF_YOLO_BBOX')
+ann_list.append(os.path.join(lbl_dir,'/TCRMP20180522_clip_GBF_COCO/'))
+out_list.append(os.path.join(lbl_dir,'/TCRMP20180522_clip_GBF_YOLO_BBOX'))
 
 for i, ann_file in enumerate(ann_list):
     general_json2yolo.convert_coco_json(ann_file,  # directory with *.json
@@ -67,7 +66,7 @@ for i, ann_file in enumerate(ann_list):
 
 print('copy over all images and text files')
 
-dataset_dir = '/home/zachary/UVI_Training/data/yolo_box'
+dataset_dir = '/home/dorian/Data/uvi/yolo_box'
 dataset_img_dir = os.path.join(dataset_dir, 'images')
 dataset_lbl_dir = os.path.join(dataset_dir, 'labels')
 os.makedirs(dataset_img_dir, exist_ok=True)
@@ -104,7 +103,7 @@ make_empty_textfiles.make_empty_textfiles(dataset_lbl_dir, dataset_lbl_dir, data
 
 ## ============= split_data ========================
 
-dataset_dir_out = '/home/zachary/UVI_Training/data/yolo_box/dataset_20230607'
+dataset_dir_out = '/home/dorian/Data/uvi/yolo_box/dataset_20230607'
 train_ratio = 0.8
 val_ratio = 0.1
 test_ratio = 0.1
