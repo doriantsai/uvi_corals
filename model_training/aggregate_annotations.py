@@ -54,45 +54,6 @@ import os
 #     10: Millepora alcicornis
 #     11: Mycetophyllia sp.
 #     12: Meandrina meandrites
-    
-
-
-# find all examples of the given classes, and change them to just agaricia or or
-# actually, since it's YOLO, I just have to change numbers
-# just create a dictionary:
-class_change = {
-    '0': '0', # Agaricia lamarki -> Agaricia
-    '1': '0', # Agaricia undata -> Agaricia
-    '2': '0', # Agaricia agaricites -> Agaricia
-    '3': '0', # Agaricia fragilis -> Agaricia
-    '4': '2', # Montastrea cavernosa -> same
-    '5': '0', # Agaricia grahamae -> Agaricia
-    '6': '3', # Sidastrea siderea -> same
-    '7': '4', # Unknown coral -> same
-    '8': '1', # Orbicella anularis -> Orbicella
-    '9': '1', # Orbicella franksi -> Orbicella
-    '10': '5', # Solanastrea intersepta -> same
-    '11': '6', # Colpophyllia natans -> same
-    '12': '1', # Orbicella sp. -> Orbicella
-    '13': '7', # Porites porites -> same
-    '14': '8', # Porites asteroides -> same
-    '15': '9', # Pseudodiplora strigosa -> same
-    '16': '10', # Millepora alcicornis -> same
-    '17': '0', # Agaricia sp. -> Agaricia
-    '18': '11', # Mycetophyllia sp. -> same
-    '19': '12'  # Meandrina meandrites -> same
-}
-
-# read in all label files
-lbl_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels'
-lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
-
-out_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined'
-os.makedirs(out_dir, exist_ok=True)
-
-# for each lbl_file
-# iterate through each line in the label file
-# for the first character, apply class_change
 
 def replace_first_column(input_file, output_file, class_change):
     with open(input_file, 'r') as file:
@@ -107,15 +68,60 @@ def replace_first_column(input_file, output_file, class_change):
     with open(output_file, 'w') as file:
         file.writelines(modified_lines)
         
+        
+def aggregate_annotations(lbl_dir, out_dir):
 
-for i, lbl_path in enumerate(lbl_files):
-    print(f'{i}/{len(lbl_files)}')
-    
-    out_file = os.path.join(out_dir, os.path.basename(lbl_path))
-    replace_first_column(lbl_path, out_file, class_change)
-    
-print('done')
+    # find all examples of the given classes, and change them to just agaricia or or
+    # actually, since it's YOLO, I just have to change numbers
+    # just create a dictionary:
+    class_change = {
+        '0': '0', # Agaricia lamarki -> Agaricia
+        '1': '0', # Agaricia undata -> Agaricia
+        '2': '0', # Agaricia agaricites -> Agaricia
+        '3': '0', # Agaricia fragilis -> Agaricia
+        '4': '2', # Montastrea cavernosa -> same
+        '5': '0', # Agaricia grahamae -> Agaricia
+        '6': '3', # Sidastrea siderea -> same
+        '7': '4', # Unknown coral -> same
+        '8': '1', # Orbicella anularis -> Orbicella
+        '9': '1', # Orbicella franksi -> Orbicella
+        '10': '5', # Solanastrea intersepta -> same
+        '11': '6', # Colpophyllia natans -> same
+        '12': '1', # Orbicella sp. -> Orbicella
+        '13': '7', # Porites porites -> same
+        '14': '8', # Porites asteroides -> same
+        '15': '9', # Pseudodiplora strigosa -> same
+        '16': '10', # Millepora alcicornis -> same
+        '17': '0', # Agaricia sp. -> Agaricia
+        '18': '11', # Mycetophyllia sp. -> same
+        '19': '12'  # Meandrina meandrites -> same
+    }
 
-# # debug
-import code
-code.interact(local=dict(globals(), **locals()))
+    # read in all label files
+    lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
+    
+    # make output directory
+    os.makedirs(out_dir, exist_ok=True)
+
+    # for each lbl_file
+    # iterate through each line in the label file
+    # for the first character, apply class_change
+
+    for i, lbl_path in enumerate(lbl_files):
+        print(f'{i}/{len(lbl_files)}')
+        
+        out_file = os.path.join(out_dir, os.path.basename(lbl_path))
+        replace_first_column(lbl_path, out_file, class_change)
+        
+    print('done')
+
+
+if __name__ == '__main__':
+    
+    lbl_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels'
+    out_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined'
+    aggregate_annotations(lbl_dir, out_dir)
+    
+    # # debug
+    import code
+    code.interact(local=dict(globals(), **locals()))
