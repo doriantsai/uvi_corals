@@ -48,7 +48,8 @@ def keep_classes(input_file, output_file, keep_classes):
         
 def remove_classes(lbl_dir, out_dir, classes_to_keep):
     # read in all label files
-
+    print('remove classes')
+    
     lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
 
 

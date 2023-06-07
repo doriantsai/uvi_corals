@@ -62,6 +62,7 @@ def move_file(filelist,savepath,second_path):
         
                
 def split_data(image_dir, label_dir, out_dir, train_ratio, val_ratio, test_ratio):
+    print('split data')
     check_ratio(test_ratio,train_ratio,val_ratio)
     clean_dirctory(out_dir)
 

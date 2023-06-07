@@ -10,7 +10,7 @@ import shutil
 def make_empty_textfiles(lbl_dir_in, lbl_dir_out, img_dir):
     # os.makedirs(lbl_dir_out, exist_ok=True)
     # image_dir = os.path.join(dataset_dir, 'images')
-
+    print('make empty files')
 
     # copy over labels from original directory
     # NOTE: not necessary if lbl_dir == lbl_dir_out
@@ -29,7 +29,7 @@ def make_empty_textfiles(lbl_dir_in, lbl_dir_out, img_dir):
     # code.interact(local=dict(globals(), **locals()))
 
     for i, image_path in enumerate(image_list):
-        print(f'{i}/{len(image_list)}')
+        # print(f'{i}/{len(image_list)}')
         
         image_name = os.path.basename(image_path)
         expected_label_name = image_name.rsplit('.')[0] + '.txt'

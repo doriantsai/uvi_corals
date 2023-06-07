@@ -30,29 +30,29 @@ out_list = []
 ann_list.append(os.path.join(lbl_dir,'TCRMP20180511_clip_HBE_COCO/'))
 out_list.append(os.path.join(lbl_dir,'TCRMP20180511_clip_HBE_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20180227_clip_CBD_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20180227_clip_CBD_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180227_clip_CBD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180227_clip_CBD_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20180302_clip_LBH_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20180302_clip_LBH_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180302_clip_LBH_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180302_clip_LBH_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20180605_clip_MRS_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20180605_clip_MRS_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180605_clip_MRS_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180605_clip_MRS_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20181104_clip_SRD_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20181104_clip_SRD_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20181104_clip_SRD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20181104_clip_SRD_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20181212_clip_GBF_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20181212_clip_GBF_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20181212_clip_GBF_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20181212_clip_GBF_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20221021_clip_LBP_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20221021_clip_LBP_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20221021_clip_LBP_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20221021_clip_LBP_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20180228_clip_SRD_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20180228_clip_SRD_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180228_clip_SRD_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180228_clip_SRD_YOLO_BBOX'))
 
-ann_list.append(os.path.join(lbl_dir,'/TCRMP20180522_clip_GBF_COCO/'))
-out_list.append(os.path.join(lbl_dir,'/TCRMP20180522_clip_GBF_YOLO_BBOX'))
+ann_list.append(os.path.join(lbl_dir,'TCRMP20180522_clip_GBF_COCO/'))
+out_list.append(os.path.join(lbl_dir,'TCRMP20180522_clip_GBF_YOLO_BBOX'))
 
 for i, ann_file in enumerate(ann_list):
     general_json2yolo.convert_coco_json(ann_file,  # directory with *.json
@@ -103,10 +103,10 @@ make_empty_textfiles.make_empty_textfiles(dataset_lbl_dir, dataset_lbl_dir, data
 
 ## ============= split_data ========================
 
-dataset_dir_out = '/home/dorian/Data/uvi/yolo_box/dataset_20230607'
-train_ratio = 0.8
-val_ratio = 0.1
-test_ratio = 0.1
+dataset_dir_out = '/home/dorian/Data/uvi/yolo_box/dataset_20230608'
+train_ratio = 0.85
+val_ratio = 0.14
+test_ratio = 0.01
 split_data.split_data(dataset_img_dir, dataset_lbl_dir, dataset_dir_out, train_ratio, val_ratio, test_ratio)
 
 import code

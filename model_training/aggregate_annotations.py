@@ -71,6 +71,7 @@ def replace_first_column(input_file, output_file, class_change):
         
 def aggregate_annotations(lbl_dir, out_dir):
 
+    print('aggregate annotations')
     # find all examples of the given classes, and change them to just agaricia or or
     # actually, since it's YOLO, I just have to change numbers
     # just create a dictionary:
@@ -108,7 +109,7 @@ def aggregate_annotations(lbl_dir, out_dir):
     # for the first character, apply class_change
 
     for i, lbl_path in enumerate(lbl_files):
-        print(f'{i}/{len(lbl_files)}')
+        # print(f'{i}/{len(lbl_files)}')
         
         out_file = os.path.join(out_dir, os.path.basename(lbl_path))
         replace_first_column(lbl_path, out_file, class_change)
