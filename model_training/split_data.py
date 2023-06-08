@@ -32,9 +32,13 @@ def clean_dirctory(savepath):
         shutil.rmtree(savepath)
     os.makedirs(savepath, exist_ok=True)
     
-def seperate_files(number,original_image_list, original_text_list, change_image_list, change_text_list):
+def seperate_files(number,
+                   original_image_list, 
+                   original_text_list, 
+                   change_image_list, 
+                   change_text_list):
     for i in range(int(number)):
-        r = random.randint(0, len(change_image_list))
+        r = random.randint(0, len(original_image_list)) # i think should orig
         
         change_image_list.append(original_image_list[r])
         original_image_list.remove(original_image_list[r])
@@ -75,7 +79,11 @@ def split_data(image_dir, label_dir, out_dir, train_ratio, val_ratio, test_ratio
     testtext = []
 
     #pick some random files
-    seperate_files(len(imagelist) * val_ratio, imagelist, txtlist, validimg, validtext) #get some valid images
+    seperate_files(len(imagelist) * val_ratio, 
+                   imagelist, 
+                   txtlist, 
+                   validimg, 
+                   validtext) #get some valid images
     seperate_files(len(imagelist) * test_ratio, imagelist, txtlist, testimg, testtext)
         
     move_file(imagelist,out_dir,'train/images')
