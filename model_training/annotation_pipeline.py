@@ -15,6 +15,7 @@ import aggregate_annotations
 import remove_classes
 import make_empty_textfiles
 import split_data
+import blur_images
 
 ## image folders
 # img_dir = []
@@ -129,12 +130,12 @@ make_empty_textfiles.make_empty_textfiles(dataset_lbl_dir, dataset_lbl_dir, data
 #    print(f'{i}/{len(img_list)}: {os.path.basename(img_name)}')
 #    img_blur = cv.blur(img,(5,5))
 
-
+blur_images.blur_images(dataset_img_dir, dataset_img_dir, kernel=(5,5))
 
 
 ## ============= split_data ========================
 
-dataset_dir_out = '/home/zachary/UVI_Training/data/yolo_box/dataset_20230608_agaricia'
+dataset_dir_out = '/home/zachary/UVI_Training/data/yolo_box/dataset_20230608_agaricia_blur'
 train_ratio = 0.85
 val_ratio = 0.14
 test_ratio = 0.01
