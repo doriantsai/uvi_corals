@@ -69,34 +69,13 @@ def replace_first_column(input_file, output_file, class_change):
         file.writelines(modified_lines)
         
         
-def aggregate_annotations(lbl_dir, out_dir):
+def aggregate_annotations(lbl_dir, out_dir, class_change):
 
     print('aggregate annotations')
     # find all examples of the given classes, and change them to just agaricia or or
     # actually, since it's YOLO, I just have to change numbers
     # just create a dictionary:
-    class_change = {
-        '0': '0', # Agaricia lamarki -> Agaricia
-        '1': '0', # Agaricia undata -> Agaricia
-        '2': '0', # Agaricia agaricites -> Agaricia
-        '3': '0', # Agaricia fragilis -> Agaricia
-        '4': '2', # Montastrea cavernosa -> same
-        '5': '0', # Agaricia grahamae -> Agaricia
-        '6': '3', # Sidastrea siderea -> same
-        '7': '4', # Unknown coral -> same
-        '8': '1', # Orbicella anularis -> Orbicella
-        '9': '1', # Orbicella franksi -> Orbicella
-        '10': '5', # Solanastrea intersepta -> same
-        '11': '6', # Colpophyllia natans -> same
-        '12': '1', # Orbicella sp. -> Orbicella
-        '13': '7', # Porites porites -> same
-        '14': '8', # Porites asteroides -> same
-        '15': '9', # Pseudodiplora strigosa -> same
-        '16': '10', # Millepora alcicornis -> same
-        '17': '0', # Agaricia sp. -> Agaricia
-        '18': '11', # Mycetophyllia sp. -> same
-        '19': '12'  # Meandrina meandrites -> same
-    }
+    
 
     # read in all label files
     lbl_files = sorted(glob.glob(os.path.join(lbl_dir, '*.txt')))
@@ -121,7 +100,29 @@ if __name__ == '__main__':
     
     lbl_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels'
     out_dir = '/home/zachary/UVI_Training/data/yolo_seg/dataset_20230606/labels_combined'
-    aggregate_annotations(lbl_dir, out_dir)
+    class_change = {
+        '0': '0', # Agaricia lamarki -> Agaricia
+        '1': '0', # Agaricia undata -> Agaricia
+        '2': '0', # Agaricia agaricites -> Agaricia
+        '3': '0', # Agaricia fragilis -> Agaricia
+        '4': '2', # Montastrea cavernosa -> same
+        '5': '0', # Agaricia grahamae -> Agaricia
+        '6': '3', # Sidastrea siderea -> same
+        '7': '4', # Unknown coral -> same
+        '8': '1', # Orbicella anularis -> Orbicella
+        '9': '1', # Orbicella franksi -> Orbicella
+        '10': '5', # Solanastrea intersepta -> same
+        '11': '6', # Colpophyllia natans -> same
+        '12': '1', # Orbicella sp. -> Orbicella
+        '13': '7', # Porites porites -> same
+        '14': '8', # Porites asteroides -> same
+        '15': '9', # Pseudodiplora strigosa -> same
+        '16': '10', # Millepora alcicornis -> same
+        '17': '0', # Agaricia sp. -> Agaricia
+        '18': '11', # Mycetophyllia sp. -> same
+        '19': '12'  # Meandrina meandrites -> same
+    }
+    aggregate_annotations(lbl_dir, out_dir, class_change)
     
     # # debug
     # import code
