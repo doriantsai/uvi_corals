@@ -55,7 +55,7 @@ class Plotter:
                 w = round(float(b)*imgw)
                 h = round(float(c)*imgh)
                 y1.append(h+round(float(e)*imgh/2))
-                y2.append(h-round(float(d)*imgh/2))
+                y2.append(h-round(float(e)*imgh/2))
                 x1.append(w+round(float(d)*imgw/2))
                 x2.append(w-round(float(d)*imgw/2))
                 cv.rectangle(image, (x1[i], y1[i]), (x2[i], y2[i]), colour, line_thickness)
