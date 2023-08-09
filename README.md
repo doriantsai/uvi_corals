@@ -37,10 +37,12 @@ https://github.com/ultralytics/ultralytics
 
       /ultralytics/ultralytics/yolo/data/dataloaders/v5augmentations.py
 
+- NOTE: potential confusion to which yolov8 ultralytics version is being used, disambiguate via `which ultralytics`
+- NOTE: Yolov8 architecture is changing, and so most recently (2023/08/09) Serena and Dorian found the same functionality in `/ultralytics/ultralytics/data/augment.py`
 - made the following changes (namely added ColorJitter, and RandomResizedCrop)
 
       T = [
-            A.RandomResizedCrop(height=size, width=size, scale=(0.8, 1.0), ratio=(0.9, 1.11), p=0.5),
+            A.RandomResizedCrop(height=s640, width=640, scale=(0.8, 1.0), ratio=(0.9, 1.11), p=0.5),
             A.Blur(p=0.01),
             A.MedianBlur(p=0.01),
             A.ToGray(p=0.01),
